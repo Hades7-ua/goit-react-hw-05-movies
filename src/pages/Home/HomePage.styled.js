@@ -9,7 +9,7 @@ export const HomePageContainer = styled.div`
 `;
 
 export const TitleHomePage = styled.h1`
-  color: #3f51b5;
+  color: black;
   font-size: 28px;
   margin-bottom: 20px;
 `;

@@ -19,7 +19,7 @@ export default function MoviesList({ movies }) {
                     ? `https://image.tmdb.org/t/p/w300${poster_path}`
                     : defaultImg
                 }
-                alt=""
+                alt="poster"
                 width={250}
               />
               <TitleMovieList>{title}</TitleMovieList>

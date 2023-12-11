@@ -34,15 +34,15 @@ export const App = () => {
                 {' '}
                 <NavLink to="/movies">Movies</NavLink>
               </li>
-              <li>
+              {/* <li>
                 <NavLink to="/movies/:movieId">Details</NavLink>
-              </li>
-              <li>
+              </li> */}
+              {/* <li>
                 <NavLink to="cast">Cast</NavLink>
               </li>
               <li>
                 <NavLink to="reviews">Reviews</NavLink>
-              </li>
+              </li> */}
             </ul>
           </nav>
         </header>
