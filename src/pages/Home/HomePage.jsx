@@ -1,9 +1,9 @@
 import { fetchTrendMovies } from 'services/api';
 import { useState, useEffect } from 'react';
 import toast from 'react-hot-toast';
-import Spinner from 'components/Loader/Spinner';
 import { HomePageContainer, TitleHomePage } from '../Home/HomePage.styled';
 import MoviesList from 'components/MoviesList/MoviesList';
+import Spinner from 'components/Loader/Spinner';
 
 export default function HomePage() {
   const [isLoading, setIsLoading] = useState(false);
@@ -14,7 +14,7 @@ export default function HomePage() {
     const fetchMovies = async () => {
       try {
         const response = await fetchTrendMovies();
-        setMovies(response.results ?? []);
+        setMovies(response.results);
       } catch (error) {
         toast.error('Sorry, no movies found');
       } finally {

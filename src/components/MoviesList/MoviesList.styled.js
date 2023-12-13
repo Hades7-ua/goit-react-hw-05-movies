@@ -9,7 +9,7 @@ export const TrendingList = styled.li`
 
 export const Image = styled.img`
   height: 360px;
-  width: 100%;
+  width: 320px;
   border-radius: 8px;
 `;
 

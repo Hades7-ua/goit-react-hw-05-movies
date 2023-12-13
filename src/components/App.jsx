@@ -1,17 +1,13 @@
 // import { fetchTrendMovies,fetchSearchMovies,fetchMovieDetails } from "services/api";
-// import CastPage from 'pages/CastPage';
 import HomePage from '../pages/Home/HomePage';
 import MoviesDetailsPage from 'pages/DetailsMovie/MovieDetails';
 import MoviesPage from 'pages/MoviePage/MoviesPage';
-import NotFoundPage from 'pages/NotFound/NotFoundPage';
 
-// import ReviewsPage from 'pages/ReviewsPage';
-import { Routes, Route, NavLink } from 'react-router-dom';
+import Cast from './Cast/Cast';
+import Reviews from './Reviews/Reviews';
+
+import { Routes, Route, NavLink, Navigate } from 'react-router-dom';
 export const App = () => {
-  // console.log(fetchTrendMovies())
-  // console.log(fetchSearchMovies())
-  // console.log(fetchMovieDetails())
-
   return (
     <>
       <div
@@ -51,10 +47,10 @@ export const App = () => {
             <Route path="/" element={<HomePage />} />
             <Route path="/movies" element={<MoviesPage />} />
             <Route path="movies/:movieId" element={<MoviesDetailsPage />}>
-              {/* <Route path="cast" element={<Cast />} />
-              <Route path="reviews" element={<Reviews />} /> */}
+              <Route path="cast" element={<Cast />} />
+              <Route path="reviews" element={<Reviews />} />
             </Route>
-            <Route path="*" element={<NotFoundPage />} />
+            <Route path="*" element={<Navigate to="/" />} />
           </Routes>
         </div>
       </div>
