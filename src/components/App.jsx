@@ -13,12 +13,13 @@ const App = () => {
     <>
       <Suspense fallback={null}>
         <Routes>
-          <Route path="/" element={<AppLayout />} />
-          <Route index element={<HomePage />} />
-          <Route path="/movies" element={<MoviesPage />} />
-          <Route path="movies/:movieId" element={<MoviesDetailsPage />}>
-            <Route path="cast" element={<Cast />} />
-            <Route path="reviews" element={<Reviews />} />
+          <Route path="/" element={<AppLayout />}>
+            <Route index element={<HomePage />} />
+            <Route path="/movies" element={<MoviesPage />} />
+            <Route path="movies/:movieId" element={<MoviesDetailsPage />}>
+              <Route path="cast" element={<Cast />} />
+              <Route path="reviews" element={<Reviews />} />
+            </Route>
           </Route>
           <Route path="*" element={<Navigate to="/" />} />
         </Routes>

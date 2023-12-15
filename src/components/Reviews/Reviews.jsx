@@ -17,16 +17,16 @@ export default function Reviews() {
 
   return (
     <ReviewsList>
-      {reviewsList &&
-        reviewsList.map(({ id, author, content }) => {
-          return (
-            <li key={id}>
-              {' '}
-              <p>{author}</p>
-              <p>{content}</p>
-            </li>
-          );
-        })}
+      {reviewsList && reviewsList.length > 0 ? (
+        reviewsList.map(({ id, author, content }) => (
+          <li key={id}>
+            <p>{author}</p>
+            <p>{content}</p>
+          </li>
+        ))
+      ) : (
+        <li>No reviews yet</li>
+      )}
     </ReviewsList>
   );
 }

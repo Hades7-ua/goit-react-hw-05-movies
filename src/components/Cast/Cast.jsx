@@ -29,25 +29,26 @@ export default function Cast() {
 
   return (
     <CastList>
-      {castList &&
-        castList.map(({ name, id, character, profile_path }) => {
-          return (
-            <CastListItem key={id}>
-              <CastImage
-                src={
-                  profile_path
-                    ? `https://image.tmdb.org/t/p/w300${profile_path}`
-                    : defaultImg
-                }
-                alt={name}
-              />
-              <CastInfo>
-                <CastName>{name}</CastName>
-                <CastCharacter>{character}</CastCharacter>
-              </CastInfo>
-            </CastListItem>
-          );
-        })}
+      {castList && castList.length > 0 ? (
+        castList.map(({ name, id, character, profile_path }) => (
+          <CastListItem key={id}>
+            <CastImage
+              src={
+                profile_path
+                  ? `https://image.tmdb.org/t/p/w300${profile_path}`
+                  : defaultImg
+              }
+              alt={name}
+            />
+            <CastInfo>
+              <CastName>{name}</CastName>
+              <CastCharacter>{character}</CastCharacter>
+            </CastInfo>
+          </CastListItem>
+        ))
+      ) : (
+        <li>No cast information available</li>
+      )}
     </CastList>
   );
 }

@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 export const AppContainer = styled.div`
   display: grid;
@@ -40,5 +41,25 @@ export const Navigation = styled.nav`
 `;
 
 export const Content = styled.div`
-  margin-top: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  margin-left: 2px;
+`;
+
+export const MovieLink = styled.li`
+  list-style: none;
+  text-align: center;
+  margin-bottom: 20px;
+`;
+
+export const NavLinkStyled = styled(Link)`
+  text-decoration: none;
+  color: white;
+  font-size: 20px;
+  margin: 200px;
+  &:hover {
+    color: #ff4500;
+  }
 `;

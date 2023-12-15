@@ -6,6 +6,9 @@ export const ReviewsList = styled.ul`
 
   li {
     margin-bottom: 20px;
+    text-align: center;
+    font-size: 24px;
+    color: red;
 
     p {
       margin: 0;

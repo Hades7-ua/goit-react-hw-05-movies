@@ -1,6 +1,13 @@
 import { Toaster } from 'react-hot-toast';
-import { AppContainer, Content, Header, Navigation } from './AppStyled';
-import { NavLink, Outlet } from 'react-router-dom';
+import {
+  AppContainer,
+  Content,
+  Header,
+  Navigation,
+  MovieLink,
+  NavLinkStyled,
+} from './AppStyled';
+import { Outlet } from 'react-router-dom';
 import { Suspense } from 'react';
 import { Spinner } from './Loader/Spinner';
 
@@ -11,13 +18,13 @@ export const AppLayout = () => {
       <Header>
         <Navigation>
           <Content>
-            <li>
-              <NavLink to="/">Home</NavLink>
-            </li>
-            <li>
+            <MovieLink>
+              <NavLinkStyled to="/">Home</NavLinkStyled>
+            </MovieLink>
+            <MovieLink>
               {' '}
-              <NavLink to="/movies">Movies</NavLink>
-            </li>
+              <NavLinkStyled to="/movies">Movies</NavLinkStyled>
+            </MovieLink>
           </Content>
         </Navigation>
       </Header>
