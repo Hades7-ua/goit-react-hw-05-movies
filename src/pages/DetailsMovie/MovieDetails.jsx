@@ -4,6 +4,22 @@ import { fetchMovieDetails } from 'services/api';
 import toast from 'react-hot-toast';
 import { NavLink, Link, useLocation } from 'react-router-dom';
 import { Outlet } from 'react-router';
+import {
+  ContainerCard,
+  ContentContainer,
+  MovieLink,
+  ImageCard,
+  TitleMovie,
+  Overview,
+  OverviewList,
+  OverviewItem,
+  UserScope,
+  DetailsContainer,
+  TextContainer,
+  AdditionalInfo,
+  InfoLink,
+  InfoList
+} from './MovieDetails.styled';
 
 const defaultImg =
   'https://ireland.apollo.olxcdn.com/v1/files/0iq0gb9ppip8-UA/image;s=1000x700';
@@ -36,13 +52,16 @@ export default function MoviesDetailsPage() {
   const goBackButton = useRef(location?.state?.from ?? '/');
 
   return (
-    <div>
+    <ContainerCard>
       {isLoading && <b>LOADING ...</b>}
-      <Link to={goBackButton.current}>Go Back</Link>
+      <MovieLink>
+        <Link to={goBackButton.current}>Go Back</Link>
+      </MovieLink>
+
       {moviesDetails && (
-        <>
-          <div>
-            <img
+        <DetailsContainer>
+          <ContentContainer>
+            <ImageCard
               src={
                 moviesDetails.poster_path
                   ? `https://image.tmdb.org/t/p/w300${moviesDetails.poster_path}`
@@ -50,34 +69,36 @@ export default function MoviesDetailsPage() {
               }
               alt=""
             />
-            <div>
-              <h2>{moviesDetails.original_title}</h2>
-              <p>{moviesDetails.overview}</p>
-              <ul>
+            <TextContainer>
+              <TitleMovie>{moviesDetails.original_title}</TitleMovie>
+              <Overview>{moviesDetails.overview}</Overview>
+              <OverviewList>
                 {moviesDetails.genres.map(({ id, name }) => {
                   return (
-                    <li key={id}>
+                    <OverviewItem key={id}>
                       <p>{name}</p>
-                    </li>
+                    </OverviewItem>
                   );
                 })}
-              </ul>
-              <p>User Scope: {Math.round(moviesDetails.vote_average)}</p>
-            </div>
-          </div>
-        </>
+              </OverviewList>
+              <UserScope>
+                User Scope: {Math.round(moviesDetails.vote_average)}
+              </UserScope>
+            </TextContainer>
+          </ContentContainer>
+        </DetailsContainer>
       )}
-      <p>Additional information</p>
-      <ul>
-        <li>
+      <AdditionalInfo>Additional information</AdditionalInfo>
+      <InfoLink>
+        <InfoList>
           <NavLink to="cast">Cast</NavLink>
-        </li>
-        <li>
+        </InfoList>
+        <InfoList>
           <NavLink to="reviews">Reviews</NavLink>
-        </li>
-      </ul>
+        </InfoList>
+      </InfoLink>
 
       <Outlet />
-    </div>
+    </ContainerCard>
   );
 }

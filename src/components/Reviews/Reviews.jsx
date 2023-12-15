@@ -1,6 +1,7 @@
 import { useParams } from 'react-router-dom';
 import { fetchMovieReviews } from '../../services/api';
 import { useState, useEffect } from 'react';
+import { ReviewsList } from './Reviews.styled';
 
 export default function Reviews() {
   const { movieId } = useParams();
@@ -15,7 +16,7 @@ export default function Reviews() {
   }, [movieId]);
 
   return (
-    <ul>
+    <ReviewsList>
       {reviewsList &&
         reviewsList.map(({ id, author, content }) => {
           return (
@@ -26,6 +27,6 @@ export default function Reviews() {
             </li>
           );
         })}
-    </ul>
+    </ReviewsList>
   );
 }

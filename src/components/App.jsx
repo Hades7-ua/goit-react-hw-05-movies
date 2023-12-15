@@ -1,59 +1,30 @@
-// import { fetchTrendMovies,fetchSearchMovies,fetchMovieDetails } from "services/api";
-import HomePage from '../pages/Home/HomePage';
-import MoviesDetailsPage from 'pages/DetailsMovie/MovieDetails';
-import MoviesPage from 'pages/MoviePage/MoviesPage';
+import React, { lazy, Suspense } from 'react';
+import { Routes, Route, Navigate } from 'react-router-dom';
+import { AppLayout } from './AppLayout';
 
-import Cast from './Cast/Cast';
-import Reviews from './Reviews/Reviews';
+const HomePage = lazy(() => import('../pages/Home/HomePage'));
+const MoviesDetailsPage = lazy(() => import('pages/DetailsMovie/MovieDetails'));
+const MoviesPage = lazy(() => import('pages/MoviePage/MoviesPage'));
+const Cast = lazy(() => import('./Cast/Cast'));
+const Reviews = lazy(() => import('./Reviews/Reviews'));
 
-import { Routes, Route, NavLink, Navigate } from 'react-router-dom';
-export const App = () => {
+const App = () => {
   return (
     <>
-      <div
-      // style={{
-      //   height: '100vh',
-      //   display: 'flex',
-      //   justifyContent: 'center',
-      //   alignItems: 'center',
-      //   fontSize: 40,
-      //   color: '#010101',
-      // }}
-      >
-        <header>
-          <nav>
-            <ul>
-              <li>
-                <NavLink to="/">Home</NavLink>
-              </li>
-              <li>
-                {' '}
-                <NavLink to="/movies">Movies</NavLink>
-              </li>
-              {/* <li>
-                <NavLink to="/movies/:movieId">Details</NavLink>
-              </li> */}
-              {/* <li>
-                <NavLink to="cast">Cast</NavLink>
-              </li>
-              <li>
-                <NavLink to="reviews">Reviews</NavLink>
-              </li> */}
-            </ul>
-          </nav>
-        </header>
-        <div>
-          <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/movies" element={<MoviesPage />} />
-            <Route path="movies/:movieId" element={<MoviesDetailsPage />}>
-              <Route path="cast" element={<Cast />} />
-              <Route path="reviews" element={<Reviews />} />
-            </Route>
-            <Route path="*" element={<Navigate to="/" />} />
-          </Routes>
-        </div>
-      </div>
+      <Suspense fallback={null}>
+        <Routes>
+          <Route path="/" element={<AppLayout />} />
+          <Route index element={<HomePage />} />
+          <Route path="/movies" element={<MoviesPage />} />
+          <Route path="movies/:movieId" element={<MoviesDetailsPage />}>
+            <Route path="cast" element={<Cast />} />
+            <Route path="reviews" element={<Reviews />} />
+          </Route>
+          <Route path="*" element={<Navigate to="/" />} />
+        </Routes>
+      </Suspense>
     </>
   );
 };
+
+export default App;

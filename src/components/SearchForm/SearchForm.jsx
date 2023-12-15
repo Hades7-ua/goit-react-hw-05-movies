@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Form } from './SearchForm.styled'
 
 export default function SearchForm({ onSearch }) {
   const [search, setSearch] = useState('');
@@ -12,13 +13,13 @@ export default function SearchForm({ onSearch }) {
     onSearch(search);
   };
   return (
-    <form onSubmit={handleSubmit}>
+    <Form onSubmit={handleSubmit}>
       <input
         type="text"
         placeholder="Enter search movie.."
         onChange={handleChange}
       />
       <button type="submit">Search</button>
-    </form>
+    </Form>
   );
 }
